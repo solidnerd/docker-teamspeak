@@ -1,4 +1,4 @@
-FROM  ubuntu:14.04
+FROM  debian:wheezy
 
 ENV   DEBIAN_FRONTEND noninteractive
 ENV   TS_VERSION 3.0.11.2
