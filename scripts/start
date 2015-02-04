@@ -9,11 +9,11 @@ Password=$TS3_MARIADB_PASS"
 
 cat > /opt/teamspeak/ts3db_mariadb.ini <<-EOF
 [config]
-host=$(DB_PORT_3306_TCP_ADDR)
-port=$(DB_PORT_3306_TCP_PORT)
-username=$(DB_USER)
-password=$(DB_PASSWORD)
-database=$(DB_NAME)
+host=$(echo $DB_PORT_3306_TCP_ADDR)
+port=$(echo $DB_PORT_3306_TCP_PORT)
+username=$(echo $DB_USER)
+password=$(echo $DB_PASSWORD)
+database=$(echo $DB_NAME)
 socket=
 EOF
 
