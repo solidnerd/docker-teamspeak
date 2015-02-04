@@ -18,6 +18,7 @@ RUN   wget "http://dl.4players.de/ts/releases/$TS_VERSION/teamspeak3-server_linu
 RUN  cp "/opt/teamspeak/redist/libmariadb.so.2" /opt/teamspeak
 
 ADD ini/ts3server.ini /opt/teamspeak/ts3server.ini
+ADD ini/ts3db_mardiadb.ini /opt/teamspeak/ts3db_mariadb.ini
 
 ADD scripts/start /start
 

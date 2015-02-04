@@ -8,10 +8,10 @@ Username=$TS3_MARIADB_USER,
 Password=$TS3_MARIADB_PASS"
 
 #Create MariaDB Config
-sed -i -e "s/host=/host=$TS3DB_PORT_3306_TCP_ADDR/g" /opt/teamspeak/ts3db_mariadb.ini
-sed -i -e "s/port=/port=$TS3DB_PORT_3306_TCP_PORT/g" /opt/teamspeak/ts3db_mariadb.ini
-sed -i -e "s/username=/username=$TS3_MARIADB_USER/g" /opt/teamspeak/ts3db_mariadb.ini
-sed -i -e "s/password=/password=$TS3_MARIADB_PASS/g" /opt/teamspeak/ts3db_mariadb.ini
-sed -i -e "s/database=/database=$TS3_MARIADB_DB/g" /opt/teamspeak/ts3db_mariadb.ini
+sed -i -e "s/host=*/host=$TS3DB_PORT_3306_TCP_ADDR/g" /opt/teamspeak/ts3db_mariadb.ini
+sed -i -e "s/port=*/port=$TS3DB_PORT_3306_TCP_PORT/g" /opt/teamspeak/ts3db_mariadb.ini
+sed -i -e "s/username=*/username=$TS3_MARIADB_USER/g" /opt/teamspeak/ts3db_mariadb.ini
+sed -i -e "s/password=*/password=$TS3_MARIADB_PASS/g" /opt/teamspeak/ts3db_mariadb.ini
+sed -i -e "s/database=*/database=$TS3_MARIADB_DB/g" /opt/teamspeak/ts3db_mariadb.ini
 # Run Teamspeak server
 cd /opt/teamspeak && ./ts3server_minimal_runscript.sh inifile=ts3server.ini
