@@ -12,20 +12,15 @@ RUN   wget "http://dl.4players.de/ts/releases/$TS_VERSION/teamspeak3-server_linu
       -O teamspeak3-server_linux-amd64-$TS_VERSION.tar.gz \
       ; tar -zxf teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz \
       ; mv teamspeak3-server_linux-amd64 /opt/teamspeak \
-      ; rm teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz
-
-
-RUN  cp "/opt/teamspeak/redist/libmariadb.so.2" /opt/teamspeak
+      ; rm teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz \
+      cp "/opt/teamspeak/redist/libmariadb.so.2" /opt/teamspeak \
+      && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ini/ts3server.ini /opt/teamspeak/ts3server.ini
 ADD ini/ts3db_mariadb.ini /opt/teamspeak/ts3db_mariadb.ini
-
 ADD scripts/start /start
 
 RUN chmod +x /start
-
-#Make Image smaller
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 9987/udp
 EXPOSE 10011
