@@ -13,7 +13,7 @@ RUN   wget "http://dl.4players.de/ts/releases/${TS_VERSION}/teamspeak3-server_li
       ; tar -zxf teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz \
       ; mv teamspeak3-server_linux-amd64 /opt/teamspeak \
       ; rm teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz \
-      cp "/opt/teamspeak/redist/libmariadb.so.2" /opt/teamspeak \
+      ; cp "/opt/teamspeak/redist/libmariadb.so.2" /opt/teamspeak \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ini/ts3server.ini /opt/teamspeak/ts3server.ini
