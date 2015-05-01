@@ -1,14 +1,14 @@
 FROM  debian:jessie
 
 ENV   DEBIAN_FRONTEND noninteractive
-ENV   TS_VERSION 3.0.11.2
+ENV   TS_VERSION 3.0.11.3
 
 ENV   TS3_MARIADB_DB TS3_DB_9987
 ENV   TS3_MARIADB_USER root
 ENV   TS3_MARIADB_PASS password
 
 RUN   apt-get update && apt-get install wget mysql-common -y
-RUN   wget "http://dl.4players.de/ts/releases/$TS_VERSION/teamspeak3-server_linux-amd64-$TS_VERSION.tar.gz" \
+RUN   wget "http://dl.4players.de/ts/releases/${TS_VERSION}/teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz" \
       -O teamspeak3-server_linux-amd64-$TS_VERSION.tar.gz \
       ; tar -zxf teamspeak3-server_linux-amd64-${TS_VERSION}.tar.gz \
       ; mv teamspeak3-server_linux-amd64 /opt/teamspeak \
