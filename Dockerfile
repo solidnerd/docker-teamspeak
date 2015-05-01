@@ -1,4 +1,4 @@
-FROM  debian:wheezy
+FROM  debian:jessie
 
 ENV   DEBIAN_FRONTEND noninteractive
 ENV   TS_VERSION 3.0.11.2
