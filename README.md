@@ -10,7 +10,7 @@ A docker container to running a teamspeak server with/out MariaDB.
 Starts Teamspeak with a sql_lite instance.
 
 ```
-	docker run --rm -it -P solidnerd/teamspeak:3.0.12.2
+	docker run --rm -it -P solidnerd/teamspeak:3.0.12.3
 ```
 # Run with MariaDB
 
@@ -24,7 +24,7 @@ Starts Teamspeak with a sql_lite instance.
 ```
 3. Connect the TeamSpeak Server to the DB
 ```
-	docker run -d -P --net="<NETWORK_NAME" --env-file=.envfile solidnerd/teamspeak:3.0.12.2
+	docker run -d -P --net="<NETWORK_NAME>" --env-file=.envfile solidnerd/teamspeak:3.0.12.3
 ```
 
 # Available Configuration Parameters
