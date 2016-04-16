@@ -1,6 +1,6 @@
 docker-teamspeak
 ========================
-[![](https://badge.imagelayers.io/solidnerd/teamspeak:latest.svg)](https://imagelayers.io/?images=solidnerd/teamspeak:latest 'Get your own badge on imagelayers.io')
+forked from https://github.com/SolidNerd/docker-teamspeak
 
 # Introduction
 A docker container to running a teamspeak server with/out MariaDB.
