@@ -1,4 +1,4 @@
-docker-teamspeak
+##docker-teamspeak
 ========================
 forked from https://github.com/SolidNerd/docker-teamspeak
 
@@ -11,13 +11,13 @@ A docker container to running a teamspeak server with a separated MariaDB docker
 ```
 	docker network create --driver bridge <YOUR_NETWORK_NAME>
 ```
-1. Start A MariaDB Instance
+2. Start A MariaDB Instance
 ```
 	docker run -d --name="<YOUR_MARIADB_NAME>" --net="<YOUR_NETWORK_NAME>" -e MYSQL_ROOT_PASSWORD=<YOUR_MYSQL_ROOT_PASSWORD> -e MYSQL_DATABASE=<YOUR_MYSQL_TEAMSPEAK_DATABASE> -e MYSQL_USER=<YOUR_MYSQL_TEAMSPEAK_USER> -e MYSQL_PASSWORD=<YOUR_MYSQL_TEAMSPEAK_PASSWORD> mariadb:latest
 ```
 # Setup Teamspeak Server and Credentials
 
-2. Find out the network adress of the database
+1. Find out the network adress of the database
 ```
 	docker network inspect <YOUR_NETWORK_NAME>
 ```
@@ -27,7 +27,7 @@ A docker container to running a teamspeak server with a separated MariaDB docker
 	nano /opt/teamspeak.conf/teamspeak.envfile
 ```
 
-2. Just enter the Credentials from above
+3. Just enter the Credentials from above
 ```
 	MYSQL_DATABASE=<YOUR_MYSQL_TEAMSPEAK_DATABASE>
 	MYSQL_USER=<YOUR_MYSQL_TEAMSPEAK_USER>
@@ -35,7 +35,7 @@ A docker container to running a teamspeak server with a separated MariaDB docker
 	TS3_MARIADB_HOST=<YOUR_MYSQL_NETWORK_IP>
 	TS3_MARIADB_PORT=3306
 ```
-2. Run Teamspeak Server	and expose the ports manually
+4. Run Teamspeak Server	and expose the ports manually
 ```
 	docker run -d --net="<YOUR_NETWORK_NAME>" --env-file=/opt/teamspeak.conf/teamspeak.envfile -p 9987:9987/udp -p 10011:10011 -p 30033:30033 c3b-watzefak/teamspeak:latest
 ```
