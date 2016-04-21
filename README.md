@@ -1,33 +1,62 @@
-docker-teamspeak
+# docker-teamspeak
 ========================
 [![](https://badge.imagelayers.io/solidnerd/teamspeak:latest.svg)](https://imagelayers.io/?images=solidnerd/teamspeak:latest 'Get your own badge on imagelayers.io')
 
-# Introduction
-A docker container to running a teamspeak server with/out MariaDB.
+## Current Version: [3.0.12.3 ](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
 
-# Quickstart
+## Introduction
 
-Starts Teamspeak with a sql_lite instance.
+A docker container to running a teamspeak server with a SQLite database or a MySQL/MariaDB Database.
+
+## Quickstart
+
+Run the Teamspeak Server with a SQLite Database.
 
 ```
-	docker run --rm -it -P solidnerd/teamspeak:3.0.12.3
-```
-# Run with MariaDB
-
-1. Create a Docker Network for later connections
-```
-	docker network create --driver bridge <NETWORK_NAME>
-```
-2. Start A MariaDB Instance
-```
-	docker run -d --name="<MARIADB_NAME>" --net="<NETWORK_NAME>" mariadb:10.1.12
-```
-3. Connect the TeamSpeak Server to the DB
-```
-	docker run -d -P --net="<NETWORK_NAME>" --env-file=.envfile solidnerd/teamspeak:3.0.12.3
+docker run -d --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.12.3
 ```
 
-# Available Configuration Parameters
+### Receiving Admin Token and Server Query Admin
+
+To receive this information you need only to run: 
+```
+docker logs teamspeak_server
+```
+
+## Start the teamspeak server with a Database
+
+### Docker < v1.9
+1. MySQL Container:
+```
+docker run -d --name="teamspeak-mysql" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=teamspeak -e MYSQL_USER=teamspeak -e MYSQL_PASSWORD=secret mariadb
+```
+2. Teamspeak Server Container :
+```
+docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" -p 10011:10011 -p 30033:30033  --link teamspeak-mysql:mysql solidnerd/teamspeak:3.0.12.3
+```
+
+### Docker 1.9+
+1. Create a shared network:
+   `docker network create teamspeak_nw`
+
+2.  MariaDB container :
+```
+docker run -d --net teamspeak_nw  \
+-e MYSQL_ROOT_PASSWORD=secret \
+-e MYSQL_DATABASE=teamspeak \
+-e MYSQL_USER=teamspeak \
+-e MYSQL_PASSWORD=secret \
+ --name="teamspeak-mysql" \
+ mariadb
+```
+
+3. Create Teamspeak Server Container :
+```
+docker run -d --net teamspeak_nw --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.12.3
+```
+
+
+## Available Configuration Parameters
 
 *Please refer the docker run command options for the `--env-file` flag where you can specify all required environment variables in a single file. This will save you from writing a potentially long docker run command. Alternatively you can use docker-compose.*
 
