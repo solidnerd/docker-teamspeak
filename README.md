@@ -1,5 +1,8 @@
 #docker-teamspeak
 ========================
+[![](https://imagelayers.io/badge/watzefak/docker-teamspeak:latest.svg)](https://imagelayers.io/?images=watzefak/docker-teamspeak:latest 'Get your own badge on imagelayers.io')
+
+
 forked from https://github.com/SolidNerd/docker-teamspeak
 
 # Introduction
@@ -19,12 +22,7 @@ A docker container to running a teamspeak server with a separated MariaDB docker
 
 # Setup Teamspeak Server and Credentials
 
-1. Find out the network adress of the database
-	```
-	docker network inspect <YOUR_NETWORK_NAME>
-	```
-
-2. Create an .envfile
+1. Create an .envfile
 	```
 	mkdir -p /opt/teamspeak.conf
 	nano /opt/teamspeak.conf/teamspeak.envfile
@@ -35,13 +33,13 @@ A docker container to running a teamspeak server with a separated MariaDB docker
 	MYSQL_DATABASE=<YOUR_MYSQL_TEAMSPEAK_DATABASE>
 	MYSQL_USER=<YOUR_MYSQL_TEAMSPEAK_USER>
 	MYSQL_PASSWORD=<YOUR_MYSQL_TEAMSPEAK_PASSWORD>
-	TS3_MARIADB_HOST=<YOUR_MYSQL_NETWORK_IP>
+	TS3_MARIADB_HOST=<YOUR_MARIADB_NAME>
 	TS3_MARIADB_PORT=3306
 	```
 
 4. Run Teamspeak Server	and expose the ports manually
 	```
-	docker run -d --net="<YOUR_NETWORK_NAME>" --env-file=/opt/teamspeak.conf/teamspeak.envfile -p 9987:9987/udp -p 10011:10011 -p 30033:30033 c3b-watzefak/teamspeak:latest
+	docker run -d --net="<YOUR_NETWORK_NAME>" --env-file=/opt/teamspeak.conf/teamspeak.envfile -p 9987:9987/udp -p 10011:10011 -p 30033:30033 --name <YOUR_TEAMSPEAK_NAME> c3b-watzefak/teamspeak:latest
 	```
 
 
