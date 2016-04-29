@@ -1,5 +1,5 @@
 NAME=teamspeak
-VERSION=3.0.12.3
+VERSION=3.0.12.4
 
 build:
 	docker build -t ${NAME}:${VERSION} .
@@ -7,8 +7,8 @@ build:
 shell: build
 	docker run -it --rm  ${NAME}:${VERSION} sh
 
-release: 
+release:
 	docker build -t solidnerd/${NAME}:${VERSION} .
 
 test: build
-	docker run --net="teamspeak_nw" --env-file=.envfile --rm -it -P ${NAME}:${VERSION}
+	docker run  --rm -it -p "9987:9987/udp" ${NAME}:${VERSION}
