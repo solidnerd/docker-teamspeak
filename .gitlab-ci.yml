@@ -1,0 +1,23 @@
+image: docker:1.11.2
+
+stages:
+- build
+- release
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME .
+    - docker push $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME
+
+release-image:
+  stage: release
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME
+    - docker tag $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME $CI_REGISTRY_IMAGE:$(cat VERSION)
+    - docker push $CI_REGISTRY_IMAGE:$(cat VERSION)
+  only:
+    - master
