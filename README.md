@@ -1,6 +1,6 @@
 # docker-teamspeak
 ========================
-[![](https://badge.imagelayers.io/solidnerd/teamspeak:latest.svg)](https://imagelayers.io/?images=solidnerd/teamspeak:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/solidnerd/bookstack.svg)](http://microbadger.com/images/solidnerd/bookstack "Get your own image badge on microbadger.com")
 
 ## Current Version: [3.0.13](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
 
