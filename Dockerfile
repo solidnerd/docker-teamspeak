@@ -6,6 +6,8 @@ ENV   TS_FILENAME teamspeak3-server_linux_amd64
 ENV   TS_USER teamspeak
 ENV   TS_HOME /teamspeak
 
+LABEL org.label-schema.version=$TS_VERSION
+
 RUN   apt-get update && apt-get install wget mysql-common bzip2 -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN   groupadd -r $TS_USER \
