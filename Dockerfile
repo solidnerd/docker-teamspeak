@@ -1,10 +1,9 @@
 FROM  debian:jessie
 
-ENV   TS_VERSION 3.0.13.3
-ENV   TS_FILENAME teamspeak3-server_linux_amd64
-
-ENV   TS_USER teamspeak
-ENV   TS_HOME /teamspeak
+ENV   TS_VERSION=3.0.13.3 \
+      TS_FILENAME=teamspeak3-server_linux_amd64 \
+      TS_USER=teamspeak \
+      TS_HOME=/teamspeak
 
 LABEL org.label-schema.version=$TS_VERSION
 
@@ -21,8 +20,10 @@ WORKDIR ${TS_HOME}
 RUN  wget "http://dl.4players.de/ts/releases/${TS_VERSION}/${TS_FILENAME}-${TS_VERSION}.tar.bz2" -O ${TS_FILENAME}-${TS_VERSION}.tar.bz2 \
        && tar -xjf "${TS_FILENAME}-${TS_VERSION}.tar.bz2" \
        && rm ${TS_FILENAME}-${TS_VERSION}.tar.bz2 \
-       && mv ${TS_FILENAME}/* . \
+       && mv ${TS_FILENAME}/* ${TS_HOME} \
+       && rm -r ${TS_HOME}/tsdns \
        && rm -r ${TS_FILENAME}
+
 RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
