@@ -10,14 +10,14 @@ before_script:
 build:
   stage: build
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME .
-    - docker push $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME .
+    - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
 
 release-image:
   stage: release
   script:
-    - docker pull $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME
-    - docker tag $CI_REGISTRY_IMAGE:CI_BUILD_REF_NAME $CI_REGISTRY_IMAGE:$(cat VERSION)
+    - docker pull $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+    - docker tag $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME $CI_REGISTRY_IMAGE:$(cat VERSION)
     - docker push $CI_REGISTRY_IMAGE:$(cat VERSION)
   only:
     - master
