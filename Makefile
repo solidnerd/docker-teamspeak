@@ -1,5 +1,5 @@
 NAME=teamspeak
-VERSION=3.0.12.4
+VERSION=3.0.13.4
 
 build:
 	docker build -t ${NAME}:${VERSION} .
