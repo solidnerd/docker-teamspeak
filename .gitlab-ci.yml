@@ -6,12 +6,15 @@ stages:
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+  - apk add --no-cache coreutils bash git
 
 build:
   stage: build
+  variables:
+    IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME .
-    - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+    - hooks/build 
+    - docker push $IMAGE_NAME
 
 release-image:
   stage: release
