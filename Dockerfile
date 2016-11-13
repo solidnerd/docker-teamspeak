@@ -5,7 +5,16 @@ ENV   TS_VERSION=3.0.13.5 \
       TS_USER=teamspeak \
       TS_HOME=/teamspeak
 
-LABEL org.label-schema.version=$TS_VERSION
+ARG BUILD_DATE
+ARG VCS_REF
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.docker.dockerfile="/Dockerfile" \
+      org.label-schema.license="MIT" \
+      org.label-schema.name="Docker Teamspeak" \
+      org.label-schema.url="https://github.com/solidnerd/docker-gitlab/" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/solidnerd/docker-teamspeak.git" \
+      org.label-schema.vcs-type="Git"
 
 RUN   apt-get update && apt-get install wget mysql-common bzip2 -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
