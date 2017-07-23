@@ -1,6 +1,6 @@
 FROM  debian:stretch
 
-ENV   TS_VERSION=3.0.13.6 \
+ENV   TS_VERSION=3.0.13.7 \
       TS_FILENAME=teamspeak3-server_linux_amd64 \
       TS_USER=teamspeak \
       TS_HOME=/teamspeak
