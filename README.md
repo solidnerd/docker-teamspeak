@@ -3,7 +3,7 @@ docker-teamspeak
 
 [![](https://images.microbadger.com/badges/image/solidnerd/teamspeak.svg)](http://microbadger.com/images/solidnerd/teamspeak "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/solidnerd/teamspeak.svg)](https://microbadger.com/images/solidnerd/teamspeak "Get your own commit badge on microbadger.com")
 
-## Current Version: [3.0.13.7](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
+## Current Version: [3.0.13.8](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
 
 ## Introduction
 
@@ -14,7 +14,7 @@ A docker container to running a teamspeak server with a SQLite database or a MyS
 Run the Teamspeak Server with a SQLite Database.
 
 ```
-docker run -d --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.7
+docker run -d --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.8
 ```
 
 ### Receiving Admin Token and Server Query Admin
@@ -55,7 +55,7 @@ docker run -d --name="teamspeak-mysql" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secre
 ```
 2. Teamspeak Server Container :
 ```
-docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" -p 10011:10011 -p 30033:30033  --link teamspeak-mysql:mysql solidnerd/teamspeak:3.0.13.7
+docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" -p 10011:10011 -p 30033:30033  --link teamspeak-mysql:mysql solidnerd/teamspeak:3.0.13.8
 ```
 
 ### Docker 1.9+
@@ -74,7 +74,7 @@ docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" 
 3. Create Teamspeak Server Container :
 
    ```
-   docker run -d --net teamspeak_nw --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.7
+   docker run -d --net teamspeak_nw --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.8
    ```
 
 ## Available Environment Variables
