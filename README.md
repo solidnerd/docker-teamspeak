@@ -3,7 +3,7 @@ docker-teamspeak
 
 [![](https://images.microbadger.com/badges/image/solidnerd/teamspeak.svg)](http://microbadger.com/images/solidnerd/teamspeak "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/solidnerd/teamspeak.svg)](https://microbadger.com/images/solidnerd/teamspeak "Get your own commit badge on microbadger.com")
 
-## Current Version: [3.0.13.8](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
+## Current Version: [3.1.0 ](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
 
 ## Introduction
 
@@ -14,7 +14,7 @@ A docker container to running a teamspeak server with a SQLite database or a MyS
 Run the Teamspeak Server with a SQLite Database.
 
 ```
-docker run -d --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.8
+docker run -d -e TS3SERVER_LICENSE=accept --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.1.0 
 ```
 
 ### Receiving Admin Token and Server Query Admin
@@ -55,7 +55,7 @@ docker run -d --name="teamspeak-mysql" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secre
 ```
 2. Teamspeak Server Container :
 ```
-docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" -p 10011:10011 -p 30033:30033  --link teamspeak-mysql:mysql solidnerd/teamspeak:3.0.13.8
+docker run -d -e TS3SERVER_LICENSE=accept --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" -p 10011:10011 -p 30033:30033  --link teamspeak-mysql:mysql solidnerd/teamspeak:3.1.0 
 ```
 
 ### Docker 1.9+
@@ -74,7 +74,7 @@ docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" 
 3. Create Teamspeak Server Container :
 
    ```
-   docker run -d --net teamspeak_nw --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.8
+   docker run -d -e TS3SERVER_LICENSE=accept --net teamspeak_nw --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.1.0 
    ```
 
 ## Available Environment Variables
@@ -108,8 +108,9 @@ Below is the complete list of available options that can be used to customize yo
 | `TS3_MARIADB_PASS` | Database User Password. Default to  `Not Set`. |
 | `TS3_MARIADB_HOST` | Hostname of the DatabaseServer like localhost Default to  `Not Set`. |
 | `TS3_MARIADB_PORT` | DatabaseServer Port. Default to  `Not Set`.  |
+| `TS3SERVER_LICENSE` | Accepts the teamspeak license. Default to `Not Set`.  |
 
 # LICENSE
 The MIT License (MIT)
 
-Copyright (c) 2016 Niclas Mietz
+Copyright (c) 2018 Niclas Mietz
