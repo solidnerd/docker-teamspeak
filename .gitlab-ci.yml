@@ -1,4 +1,4 @@
-image: docker:1.11.2
+image: docker:stable
 
 stages:
 - build
