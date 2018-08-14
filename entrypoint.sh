@@ -62,5 +62,6 @@ EOF
 
 # End ts3server.ini
 
+
 # Run Teamspeak server
 exec ./ts3server_minimal_runscript.sh inifile=ts3server.ini
