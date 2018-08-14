@@ -1,4 +1,4 @@
-FROM  debian:stretch
+FROM  debian:stretch-slim
 
 ENV   TS_VERSION=3.0.13.8 \
       TS_FILENAME=teamspeak3-server_linux_amd64 \
