@@ -12,4 +12,4 @@ release:
 	docker push solidnerd/${NAME}:${VERSION}
 
 test: build
-	docker run  --rm -it -p "9987:9987/udp" ${NAME}:${VERSION}
+	docker run -e TS3SERVER_LICENSE=accept --rm -it -p "9987:9987/udp" ${NAME}:${VERSION}
