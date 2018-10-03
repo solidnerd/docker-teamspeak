@@ -16,13 +16,17 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/solidnerd/docker-teamspeak.git" \
       org.label-schema.vcs-type="Git"
 
-RUN   apt-get update && apt-get install wget mysql-common bzip2 -y \
+RUN   apt-get update && apt-get install wget mysql-common bzip2 locales locales-all -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN   groupadd -r $TS_USER \
       && useradd -r -m \
         -g $TS_USER \
         -d $TS_HOME \
         $TS_USER
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
 
 WORKDIR ${TS_HOME}
 
