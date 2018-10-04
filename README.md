@@ -109,6 +109,8 @@ Below is the complete list of available options that can be used to customize yo
 | `TS3_MARIADB_HOST` | Hostname of the DatabaseServer like localhost Default to  `Not Set`. |
 | `TS3_MARIADB_PORT` | DatabaseServer Port. Default to  `Not Set`.  |
 | `TS3SERVER_LICENSE` | Accepts the teamspeak license. Default to `Not Set`.  |
+| `LC_ALL` | Overall locale setting (see [Locale](https://wiki.debian.org/Locale)). Default to `en_US.UTF-8`.  |
+| `LANG` | Language locale setting (see [Locale](https://wiki.debian.org/Locale)). Default to `en_US.UTF-8`.  |
 
 # LICENSE
 The MIT License (MIT)
