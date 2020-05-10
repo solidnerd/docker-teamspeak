@@ -1,21 +1,10 @@
-FROM  debian:stretch-slim
+FROM  debian:buster-slim
 
-ENV   TS_VERSION=3.5.0  \
-      TS_SHA256SUM="9bd56e115afea19351a6238a670dc93e365fe88f8a6c28b5b542ef6ae2ca677e" \
+ENV   TS_VERSION=3.12.1  \
+      TS_SHA256SUM="cfbffba30a570f0ba33a74ce5e5dbda54ce564d917a27183cdcaf82cc2b4abb7" \
       TS_FILENAME=teamspeak3-server_linux_amd64 \
       TS_USER=teamspeak \
       TS_HOME=/teamspeak
-
-ARG BUILD_DATE
-ARG VCS_REF
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.docker.dockerfile="/Dockerfile" \
-      org.label-schema.license="MIT" \
-      org.label-schema.name="Docker Teamspeak" \
-      org.label-schema.url="https://github.com/solidnerd/docker-teamspeak/" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/solidnerd/docker-teamspeak.git" \
-      org.label-schema.vcs-type="Git"
 
 RUN   apt-get update && apt-get install curl mysql-common bzip2 locales locales-all -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -46,6 +35,20 @@ ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
 RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh
 
 USER  ${TS_USER}
+
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.docker.dockerfile="/Dockerfile" \
+      org.label-schema.license="MIT" \
+      org.label-schema.name="Docker Teamspeak" \
+      org.label-schema.url="https://github.com/solidnerd/docker-teamspeak/" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/solidnerd/docker-teamspeak.git" \
+      org.label-schema.vcs-type="Git"
+
 
 EXPOSE 9987/udp
 EXPOSE 10011
