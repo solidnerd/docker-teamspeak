@@ -3,7 +3,7 @@ docker-teamspeak
 
 [![](https://images.microbadger.com/badges/image/solidnerd/teamspeak.svg)](http://microbadger.com/images/solidnerd/teamspeak "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/solidnerd/teamspeak.svg)](https://microbadger.com/images/solidnerd/teamspeak "Get your own commit badge on microbadger.com")
 
-## Current Version: [3.12.1](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
+## Current Version: [3.13.2](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
 
 ## Introduction
 
