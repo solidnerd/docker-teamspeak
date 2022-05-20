@@ -33,7 +33,7 @@ jobs:
         cache-to: type=inline
         outputs: type=docker,dest=/tmp/image-teamspeak.tar
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3.1.0
       with:
         name: image-teamspeak
         path: /tmp/image-teamspeak.tar
